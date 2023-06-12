@@ -21,6 +21,6 @@ app.listen(PORT, async () => {
     // await tweet.save();
     // console.log(tweet);
     const tweetRepo = new TweetRepository();
-    const tweet = await tweetRepo.getWithComments('6485892b47ad1c6652a6c9a0');
-    console.log(tweet);
+    const tweet = await tweetRepo.getAll(0,4);
+    console.log(tweet[0].contentWithEmail);
 });
