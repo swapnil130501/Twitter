@@ -10,5 +10,5 @@ app.listen(PORT, async () => {
     await connect();
     console.log('Mongo db connected');
     let ser = new service();
-    await ser.create({content: 'to #es6 module'});
+    await ser.create({content: 'to #es6 module #code'});
 });
