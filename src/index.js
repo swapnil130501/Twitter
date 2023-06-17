@@ -18,5 +18,4 @@ app.listen(PORT, async () => {
     await connect();
     console.log('Mongo db connected');
 
-    
 });
