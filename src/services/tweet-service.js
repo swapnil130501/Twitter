@@ -8,12 +8,12 @@ class TweetService{
 
     async create(data){
         console.log(data);
-        
-        const content = data.content;
-        const tags = content.match(/#[a-zA-Z0-9_]+/g)
-                    .map((tag) => tag.substring(1).toLowerCase()); // this regex extracts hashtags
         const tweet = await this.tweetRepository.create(data);
-        
+        const content = data.content;
+        if(content.includes('#')){
+            const tags = content.match(/#[a-zA-Z0-9_]+/g)
+                    .map((tag) => tag.substring(1).toLowerCase()); // this regex extracts hashtag
+
         let alreadyPresentTags = await this.hashtagRepository.findByName(tags);
         let titleOfPresentTags = alreadyPresentTags.map(tags => tags.title);
         let newTags = tags.filter(tag => !titleOfPresentTags.includes(tag));
@@ -24,7 +24,8 @@ class TweetService{
         alreadyPresentTags.forEach((tag) => {
             tag.tweets.push(tweet.id);
             tag.save();
-        });
+            });
+        }
         return tweet;
     }
 
