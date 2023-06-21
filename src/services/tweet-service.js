@@ -1,5 +1,4 @@
 import { TweetRepository, HashtagRepository } from '../repository/index.js';
-
 class TweetService{
     constructor(){
         this.tweetRepository = new TweetRepository();
