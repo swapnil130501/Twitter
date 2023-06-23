@@ -9,7 +9,7 @@ describe('Create tweet tests', () => {
             content: 'Testing tweet'
         }
         const spy = jest.spyOn(Tweet, 'create').mockImplementation(() => {
-            return {...data, craetedAt: '2023-06-22', updatedAt: '2023-06-22'}
+            return {...data, createdAt: '2023-06-22', updatedAt: '2023-06-22'}
         });
         const tweetRepository = new TweetRepository();
         const tweet = await tweetRepository.create(data);
@@ -38,7 +38,7 @@ describe('Get all tweets tests', () => {
         const data = {
             content: ['Testing tweet']
         }
-        const tweetsArray = [{...data, craetedAt: '2023-06-22', updatedAt: '2023-06-22'}, {...data, craetedAt: '2023-06-22', updatedAt: '2023-06-22'}, {...data, craetedAt: '2023-06-22', updatedAt: '2023-06-22'}];
+        const tweetsArray = [{...data, createdAt: '2023-06-22', updatedAt: '2023-06-22'}, {...data, createdAt: '2023-06-22', updatedAt: '2023-06-22'}, {...data, createdAt: '2023-06-22', updatedAt: '2023-06-22'}];
         const findResponse = {tweetsArray};
         findResponse.limit = jest.fn((limit) => findResponse.tweetsArray.slice(0,2));
         findResponse.skip = jest.fn((offset) => findResponse); 
